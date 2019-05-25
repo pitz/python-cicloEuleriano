@@ -9,20 +9,23 @@ def euleriano(listaVertices, listaArestas):
     
     for vertice in listaVertices:
         grau = grauVertice(vertice, listaArestas)
-        
+
+        if (grau == 1):
+            return False
+            
         if (grau % 2 != 0):
             numeroVerticesComGrauImpar = (numeroVerticesComGrauImpar + 1)
-
-            if (countGrauImpar > 2):
+    
+            if (numeroVerticesComGrauImpar > 2):
                 return False
     return True
 
-def grauVertice(vertice, listaArestasVertice):
+def grauVertice(vertice, listaArestas):
     grau = 0
         
-    for arestaVertice in listaArestasVertice:
+    for arestaVertice in listaArestas:
         verticeA, verticeB = arestaVertice
-
+        
         if (vertice == verticeA or vertice ==  verticeB):
             grau += 1
 
@@ -39,7 +42,7 @@ def criarListVertices():
 
     return listaVertices
 
-def criarListVertices():
+def criarListArestas():
     listaArestas = []
 
     listaArestas.append((1, 2))
@@ -52,29 +55,20 @@ def criarListVertices():
     return listaArestas
 
 if __name__=='__main__':
-    print('Criando um grafo conexo...')
-    print('...')
-    print('...')
-    print('...')
-    listaVertices = criarListVertices()
-    listaArestas  = criarListVertices()
-    print('Grafo criado.')
 
-    print('...')
-    print('...')
-    print('...')
-    
-    print('Verificando se o grafo possui Caminho Euleriano...')
+    print('1. Criando um grafo conexo...')
+    listaVertices = criarListVertices()
+    listaArestas  = criarListArestas()
+
+    print('2. Verificando se o grafo possui Caminho Euleriano...')
     euler = euleriano(listaVertices, listaArestas)
 
-    print('...')
-    print('...')
-    print('...')
+    print('')
     
     if(euler):
         print('O grafico apresentado possui um Caminho Euleriano!')
     else:
-        print('O grafico apresentado NÃO possui um Caminho Euleriano!')
+        print('O grafico apresentado [NÃO] possui um Caminho Euleriano!')
 
 
 
