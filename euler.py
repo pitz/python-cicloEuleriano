@@ -7,12 +7,48 @@ import copy
 
 if __name__=='__main__':
     
-    grafo = {
+    # Euleriano
+    grafoA = {
         0 : [1,3],
         1 : [2,0],
         2 : [3,1],
         3 : [2,0]
     }
+
+    # Não é euleriano
+    grafoB = {
+        0 : [],
+        1 : [],
+        2 : [],
+        3 : []
+    }
+
+    # Não é euleriano
+    grafoC = {
+        0 : [1,2,3],
+        1 : [2,3,0],
+        2 : [3,0,1],
+        3 : [2,3,0]
+    }
+
+    # Euleriano
+    grafoD = {
+        0 : [1,2,3],
+        1 : [2,3],
+        2 : [3,0],
+        3 : [2,3]
+    }
+
+    # Euleriano
+    grafo = {
+        0 : [1,4],
+        1 : [0,2,3],
+        2 : [1,3,5],
+        3 : [4,2,1,5],
+        4 : [0,3],
+        5 : [2,3]
+    }
+
     arestasVisitadas     = []
     caminhoEulerVisitado = []
     
@@ -97,14 +133,13 @@ if __name__=='__main__':
             return True
 
     grafoConexo = algoritmoDFS(grafo, 0, arestasVisitadas)
-    if (not grafoConexo):
-        print('O grafo não é conexo.')
-    else:
-        print('O grafo é conexo.')
-
+    if (grafoConexo):
         grafoPossuiCaminhoEuleriano = euleriano(grafo)
+
         if (grafoPossuiCaminhoEuleriano):
             print('O grafo gerado possui caminho euleriano.')
             printCaminhoEuleriano(grafo)
         else:
             print('O grafo gerado NÃO possui caminho euleriano.')
+    else:
+        print('O grafo gerado NÃO possui caminho euleriano.')
